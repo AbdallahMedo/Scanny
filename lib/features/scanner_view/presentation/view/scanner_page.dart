@@ -224,18 +224,17 @@ class _ScannerPageState extends State<ScannerPage> with SingleTickerProviderStat
 
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('QR Code Scanner', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.indigo[900],
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.photo, color: Colors.white),
-            tooltip: "Pick from gallery",
-            onPressed: _pickImageFromGallery,
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   automaticallyImplyLeading: false,
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.photo, color: Colors.white),
+      //       tooltip: "Pick from gallery",
+      //       onPressed: _pickImageFromGallery,
+      //     ),
+      //   ],
+      // ),
       body: Stack(
         children: [
           SizedBox(
@@ -243,24 +242,50 @@ class _ScannerPageState extends State<ScannerPage> with SingleTickerProviderStat
             height: size.height,
             child: CameraPreview(_cameraController),
           ),
-          // Flash toggle button - added at top left
-          Positioned(
-            top: 16,
-            left: 16,
-            child: GestureDetector(
-              onTap: _toggleFlash,
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(20),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30.0,horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Positioned(
+                  top: 16,
+                  left: 16,
+                  child: GestureDetector(
+                    onTap: _toggleFlash,
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Icon(
+                        _isFlashOn ? Icons.flash_on : Icons.flash_off,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                  ),
                 ),
-                child: Icon(
-                  _isFlashOn ? Icons.flash_on : Icons.flash_off,
-                  color: Colors.white,
-                  size: 30,
+                Positioned(
+                  top: 16,
+                  right: 16,
+                  child: GestureDetector(
+                    onTap: _pickImageFromGallery,
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Icon(
+                        Icons.photo,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           Positioned(

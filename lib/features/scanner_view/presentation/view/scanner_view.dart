@@ -13,21 +13,19 @@ class ScannerView extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        // Top illustration (replace with your own image)
         Image.asset(
-          'assets/images/scan.jpg',
-          // Use the illustrated image similar to what you uploaded
-          height: 400,
-          fit: BoxFit.fitWidth, // Ensures image stretches to fill width
+          'assets/images/onboard.jpg',
+          height: 350,
+          fit: BoxFit.fitWidth,
           width: double.infinity,
         ),
         const SizedBox(height: 50),
 
         // QR Icon (centered large icon)
         Image.asset(
-          'assets/images/qr-code-scan.png', // Replace with your own QR icon
-          height: 250,
-          width: 250,
+          'assets/images/qr-code.png',
+          height: 200,
+          width: 200,
         ),
         Spacer(),
         // Scan Button
